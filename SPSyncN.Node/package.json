@@ -1,0 +1,33 @@
+{
+  "name": "sp-sync-n",
+  "version": "0.1.0",
+  "description": "SPSyncN - SharePoint .Net assets sync via Node.js",
+  "main": "SPSyncN.js",
+  "scripts": {
+    "build": "npm run tslint && tsc -p . && webpack",
+    "tslint": "tslint --project tsconfig.json --type-check"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN.git"
+  },
+  "author": "Andrew Koltyakov <andrew.koltyakov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN/issues"
+  },
+  "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN#readme",
+  "dependencies": {
+    "spsave": "^3.1.0",
+    "string-argv": "0.0.2"
+  },
+  "devDependencies": {
+    "imports-loader": "^0.7.1",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "webpack": "^3.10.0"
+  }
+}

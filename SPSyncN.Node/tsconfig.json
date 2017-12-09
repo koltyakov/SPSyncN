@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": false,
+    "declaration": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "lib": ["es2015"],
+    "types": ["node"],
+    "outDir": "./tmp",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

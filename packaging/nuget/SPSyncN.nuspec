@@ -1,0 +1,35 @@
+﻿<package>
+
+  <metadata>
+
+    <id>SPSyncN</id>
+    <version>0.1.0</version>
+    <title>SPSyncN</title>
+
+    <description>SharePoint .Net assets sync via Node.js</description>
+    <tags>sharepoint dotnet nodejs assets sync spsave</tags>
+
+    <releaseNotes>first draft version</releaseNotes>
+
+    <authors>Andrew Koltyakov</authors>
+    <owners>ARVO Systems</owners>
+    <copyright>Copyright 2017, ARVO Systems</copyright>
+    <projectUrl>https://github.com/koltyakov/SPSyncN</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/koltyakov/SPSyncN/master/packaging/nuget/SPSyncN.png</iconUrl>
+
+    <summary>Hey! Attention please! On the first place, it is a crazy experiment which solves one of the our very specific task for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why.</summary>
+
+    <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPSyncN/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    
+    <dependencies>
+      <dependency id="Edge.js" version="8.2.1" />
+    </dependencies>
+
+  </metadata>
+
+  <files>
+    <file src="..\..\SPSyncN\bin\Debug\SPSyncN.dll" target="lib\net45" />
+  </files>
+
+</package>
