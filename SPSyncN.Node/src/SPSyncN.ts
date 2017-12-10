@@ -1,10 +1,14 @@
 ﻿import * as fs from 'fs';
 import * as path from 'path';
 import { spsave, ICoreOptions, IFileContentOptions } from 'spsave';
+import { Delete, IContext } from 'sppurge';
 
 import { utils } from './utils';
 
-import { IUploadFileParams, IUploadFolderParams } from './domain';
+import {
+  IUploadFileParams, IUploadFolderParams,
+  IRemoveFileParams, IRemoveFolderParams
+} from './domain';
 
 export const uploadFile = (args, callback) => {
 
@@ -17,7 +21,7 @@ export const uploadFile = (args, callback) => {
     checkinType: 1
   };
 
-  let creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
+  const creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
 
   const fileOptions: IFileContentOptions = {
     folder: `${params.spFolder}`,
@@ -46,7 +50,7 @@ export const uploadFolder = (args, callback) => {
     checkinType: 1
   };
 
-  let creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
+  const creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
 
   (async () => {
     let files = utils.walkSync(params.folderPath);
@@ -59,6 +63,60 @@ export const uploadFolder = (args, callback) => {
       await spsave(coreOptions, creds, fileOptions);
     }
   })()
+    .then(response => {
+      callback(null, response);
+    })
+    .catch(error => {
+      callback(error, null);
+    });
+
+};
+
+export const removeFile = (args, callback) => {
+
+  const sppurge = new Delete();
+  const params: IRemoveFileParams = utils.stringToArgvs(args);
+
+  const creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
+
+  const context: IContext = {
+    siteUrl: params.siteUrl,
+    creds: creds
+  };
+
+  let webRelativeUrl = '/' + params.siteUrl.replace('://', '__').split('/').slice(1, 100).join('/');
+
+  let filePath: string = (webRelativeUrl + params.spFilePath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
+
+  console.log(filePath);
+
+  sppurge.deleteFile(context, filePath)
+    .then(response => {
+      callback(null, response);
+    })
+    .catch(error => {
+      callback(error, null);
+    });
+
+};
+
+export const removeFolder = (args, callback) => {
+
+  const sppurge = new Delete();
+  const params: IRemoveFolderParams = utils.stringToArgvs(args);
+
+  const creds: any = JSON.parse(params.creds.replace(/___###___/g, '"'));
+
+  const context: IContext = {
+    siteUrl: params.siteUrl,
+    creds: creds
+  };
+
+  let webRelativeUrl = '/' + params.siteUrl.replace('://', '__').split('/').slice(1, 100).join('/');
+
+  let folderPath: string = (webRelativeUrl + params.spFolderPath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
+
+  sppurge.deleteFolder(context, folderPath)
     .then(response => {
       callback(null, response);
     })
