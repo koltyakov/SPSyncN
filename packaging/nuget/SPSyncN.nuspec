@@ -3,13 +3,13 @@
   <metadata>
 
     <id>SPSyncN</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <title>SPSyncN</title>
 
     <description>SharePoint .Net assets sync via Node.js</description>
     <tags>sharepoint dotnet nodejs assets sync spsave</tags>
 
-    <releaseNotes>first draft version</releaseNotes>
+    <releaseNotes>files and folders remove operations</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>

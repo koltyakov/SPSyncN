@@ -81,18 +81,25 @@ export const removeFile = (args, callback) => {
 
   const context: IContext = {
     siteUrl: params.siteUrl,
-    creds: creds
+    creds
   };
 
   let webRelativeUrl = '/' + params.siteUrl.replace('://', '__').split('/').slice(1, 100).join('/');
 
-  let filePath: string = (webRelativeUrl + params.spFilePath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
-
-  console.log(filePath);
+  let filePath: string = (webRelativeUrl + '/' + params.spFilePath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
 
   sppurge.deleteFile(context, filePath)
     .then(response => {
-      callback(null, response);
+      if (response.statusCode === 200) {
+        console.log('File has been deleted:', filePath);
+      } else {
+        console.log(response.statusCode, response.statusMessage);
+      }
+      callback(null, {
+        filePath,
+        statusCode: response.statusCode,
+        statusMessage: response.statusMessage
+      });
     })
     .catch(error => {
       callback(error, null);
@@ -109,16 +116,25 @@ export const removeFolder = (args, callback) => {
 
   const context: IContext = {
     siteUrl: params.siteUrl,
-    creds: creds
+    creds
   };
 
   let webRelativeUrl = '/' + params.siteUrl.replace('://', '__').split('/').slice(1, 100).join('/');
 
-  let folderPath: string = (webRelativeUrl + params.spFolderPath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
+  let folderPath: string = (webRelativeUrl + '/' + params.spFolderPath.replace(webRelativeUrl, '')).replace(/\/\//g, '/');
 
   sppurge.deleteFolder(context, folderPath)
     .then(response => {
-      callback(null, response);
+      if (response.statusCode === 200) {
+        console.log('Folder has been deleted:', folderPath);
+      } else {
+        console.log(response.statusCode, response.statusMessage);
+      }
+      callback(null, {
+        folderPath,
+        statusCode: response.statusCode,
+        statusMessage: response.statusMessage
+      });
     })
     .catch(error => {
       callback(error, null);

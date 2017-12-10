@@ -6,11 +6,21 @@
 
 ---
 
-The wrapper for [spsave](https://www.npmjs.com/package/spsave) for usage in .Net assemblies.
+The wrapper for:
+
+- [spsave](https://www.npmjs.com/package/spsave)
+- [sppurge](https://www.npmjs.com/package/sppurge)
+
+for usage in .Net assemblies.
 
 ---
 
-Hey! Attention, please! On the first place, it is a crazy experiment which solves one of our very specific tasks for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why. Please use the lib only in the case when native .Net credentials strategies do not suite your app.
+## Features
+
+- Upload a file to SharePoint document library
+- Upload a folder with structure and files to SharePoint
+- Remove a file from SharePoint document library
+- Remove a folder with all content from SharePoint
 
 ## Installation
 
@@ -27,6 +37,12 @@ Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
 Console.WriteLine("Upload a file...");
 Upload.File("./Documents/TextFile.txt", "Shared Documents/File Upload Test", options.SiteUrl, options.AuthOptions);
 
+Console.WriteLine("Deleting a file...");
+Remove.File("Shared Documents/File Upload Test/TextFile.txt", options.SiteUrl, options.AuthOptions);
+
 Console.WriteLine("Upload a folder...");
 Upload.Folder("./Documents", "Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
+
+Console.WriteLine("Deleting a folder...");
+Remove.Folder("Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
 ```

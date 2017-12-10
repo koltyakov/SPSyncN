@@ -7,18 +7,18 @@ namespace SPSyncN
 {
     public static class Remove
     {
-        public static dynamic File(string spFilePath, string SiteUrl, dynamic Creds)
+        public static dynamic File(string SpFilePath, string SiteUrl, dynamic Creds)
         {
             string credsJson = JsonConvert.SerializeObject(Creds).Replace("\"", "___###___");
-            string args = $@"--spFilePath=""{spFilePath}"" --siteUrl=""{SiteUrl}"" --creds=""{credsJson}""";
+            string args = $@"--spFilePath=""{SpFilePath}"" --siteUrl=""{SiteUrl}"" --creds=""{credsJson}""";
             dynamic result = FileTask(args).Result;
             return result;
         }
 
-        public static dynamic Folder(string spFolderPath, string SiteUrl, dynamic Creds)
+        public static dynamic Folder(string SpFolderPath, string SiteUrl, dynamic Creds)
         {
             string credsJson = JsonConvert.SerializeObject(Creds).Replace("\"", "___###___");
-            string args = $@"--spFolderPath=""{spFolderPath}"" --siteUrl=""{SiteUrl}"" --creds=""{credsJson}""";
+            string args = $@"--spFolderPath=""{SpFolderPath}"" --siteUrl=""{SiteUrl}"" --creds=""{credsJson}""";
             dynamic result = FolderTask(args).Result;
             return result;
         }
