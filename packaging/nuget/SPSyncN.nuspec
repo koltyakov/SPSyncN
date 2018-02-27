@@ -3,13 +3,13 @@
   <metadata>
 
     <id>SPSyncN</id>
-    <version>0.2.1</version>
+    <version>1.0.0</version>
     <title>SPSyncN</title>
 
     <description>SharePoint .Net assets sync via Node.js</description>
     <tags>sharepoint dotnet nodejs assets sync spsave</tags>
 
-    <releaseNotes>Newtonsoft.Json dependency version</releaseNotes>
+    <releaseNotes>Download functionality</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>
@@ -21,7 +21,7 @@
 
     <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPSyncN/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    
+
     <dependencies>
       <dependency id="Edge.js" version="8.2.1" />
       <dependency id="Newtonsoft.Json" version="10.0.3" />

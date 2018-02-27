@@ -1,3 +1,5 @@
+/* Upload */
+
 export interface IUploadParams {
   siteUrl: string;
   spFolder: string;
@@ -11,6 +13,25 @@ export interface IUploadFileParams extends IUploadParams {
 export interface IUploadFolderParams extends IUploadParams {
   folderPath: string;
 }
+
+/* Download */
+
+export interface IDownloadParams {
+  siteUrl: string;
+  creds: string;
+}
+
+export interface IDownloadFileParams extends IDownloadParams {
+  spFilePath: string;
+  saveToPath: string;
+}
+
+export interface IDownloadFolderParams extends IDownloadParams {
+  spRootFolder: string;
+  dlRootFolder: string;
+}
+
+/* Remove */
 
 export interface IRemoveParams {
   siteUrl: string;
