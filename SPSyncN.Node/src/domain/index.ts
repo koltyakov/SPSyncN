@@ -12,6 +12,7 @@ export interface IUploadFileParams extends IUploadParams {
 
 export interface IUploadFolderParams extends IUploadParams {
   folderPath: string;
+  diffUpload?: boolean;
 }
 
 /* Download */

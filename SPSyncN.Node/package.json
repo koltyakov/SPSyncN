@@ -5,6 +5,7 @@
   "main": "SPSyncN.js",
   "scripts": {
     "build": "npm run tslint && tsc -p . && webpack",
+    "package": "npm run build && cd .. && dotnet restore && dotnet build",
     "tslint": "tslint --project tsconfig.json --type-check"
   },
   "keywords": [],

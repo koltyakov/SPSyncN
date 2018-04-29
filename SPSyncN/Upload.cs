@@ -23,6 +23,14 @@ namespace SPSyncN
             return result;
         }
 
+        public static dynamic FolderDuff(string FolderPath, string SpFolder, string SiteUrl, dynamic Creds)
+        {
+            string credsJson = JsonConvert.SerializeObject(Creds).Replace("\"", "___###___");
+            string args = $@"--folderPath=""{FolderPath}"" --spFolder=""{SpFolder}"" --siteUrl=""{SiteUrl}"" --diffUpload=true --creds=""{credsJson}""";
+            dynamic result = FolderTask(args).Result;
+            return result;
+        }
+
         private static async Task<object> FileTask(string args)
         {
             var func = Edge.Func(Resources.SPSyncN + "; return SPSyncN.uploadFile;");

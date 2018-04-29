@@ -3,6 +3,7 @@ import * as path from 'path';
 import { spsave, ICoreOptions, IFileContentOptions } from 'spsave';
 
 import { utils } from './../utils';
+import FilesInfo, { IFileProcessItem } from './../utils/filesInfo';
 
 import { IUploadFileParams, IUploadFolderParams } from './../domain';
 
@@ -39,7 +40,7 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
 
   const params: IUploadFolderParams = utils.stringToArgvs(args);
 
-  let coreOptions: ICoreOptions = {
+  const coreOptions: ICoreOptions = {
     siteUrl: params.siteUrl,
     notification: false,
     checkin: true,
@@ -50,13 +51,42 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
 
   (async () => {
     let files = utils.walkSync(params.folderPath);
-    for (let file of files) {
-      const fileOptions: IFileContentOptions = {
-        folder: `${params.spFolder}/${path.dirname(path.relative(params.folderPath, file)).replace(/\\/g, '/')}`,
-        fileName: path.basename(file),
-        fileContent: fs.readFileSync(file)
-      };
-      await spsave(coreOptions, creds, fileOptions);
+    let remoteFiles: IFileProcessItem[] = [];
+
+    if (params.diffUpload) {
+      const filesInfo = new FilesInfo({
+        siteUrl: params.siteUrl,
+        spFolder: params.spFolder,
+        creds
+      });
+      remoteFiles = await filesInfo.getAllFilesInFolderInfo();
+    }
+
+    for (const file of files) {
+      const fileContent = fs.readFileSync(file);
+      let ignoreUpload = false;
+
+      if (remoteFiles.length > 0) {
+        const fileRelativePath = path.relative(params.folderPath, file).replace(/\\/g, '/');
+        const remoteFile = remoteFiles.filter(file => {
+          return file.relativePath === fileRelativePath;
+        });
+        if (remoteFile.length === 1) {
+          // Same size
+          if (remoteFile[0].length === fileContent.byteLength) {
+            ignoreUpload = true;
+          }
+        }
+      }
+
+      if (!ignoreUpload) {
+        const fileOptions: IFileContentOptions = {
+          folder: `${params.spFolder}/${path.dirname(path.relative(params.folderPath, file)).replace(/\\/g, '/')}`,
+          fileName: path.basename(file),
+          fileContent
+        };
+        await spsave(coreOptions, creds, fileOptions);
+      }
     }
   })()
     .then(response => {
