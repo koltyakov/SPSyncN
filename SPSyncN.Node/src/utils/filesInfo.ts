@@ -1,8 +1,4 @@
-import { readFileSync } from 'fs';
-import * as path from 'path';
 import { ISPRequest, create as createRequest } from 'sp-request';
-import { Delete } from 'sppurge';
-import * as colors from 'colors';
 
 export interface IFolderProcessItem {
   path: string;
@@ -33,47 +29,45 @@ export default class FilesInfo {
   }
 
   public getAllFilesInFolderInfo = (foldersArr: IFolderProcessItem[] = [], filesArr: IFileProcessItem[] = []): Promise<IFileProcessItem[]> => {
-    return new Promise(resolve => {
-      this.getServerRelativeUrl().then(serverRelativeUrl => {
-        if (foldersArr.length === 0) {
-          foldersArr.push({
-            path: `${serverRelativeUrl}/${this.settings.spFolder}`.replace(/\/\//g, '/'),
-            processed: false
-          });
-        }
-        if (foldersArr.filter(folder => !folder.processed).length === 0) {
-          resolve(filesArr);
-        } else {
-          let folder = foldersArr.find(folder => !folder.processed);
+    return this.getServerRelativeUrl().then(serverRelativeUrl => {
+      if (foldersArr.length === 0) {
+        foldersArr.push({
+          path: `${serverRelativeUrl}/${this.settings.spFolder}`.replace(/\/\//g, '/'),
+          processed: false
+        });
+      }
+      if (foldersArr.filter(folder => !folder.processed).length === 0) {
+        return filesArr;
+      } else {
+        let folder = foldersArr.find(folder => !folder.processed);
 
-          let requestUrl = `${this.settings.siteUrl}` +
-            `/_api/web/getFolderByServerRelativeUrl('${folder.path}')?` +
-              `$select=Files,Folders/ServerRelativeUrl,Folders/ItemCount&` +
-              `$expand=Files,Folders`;
-          this.spr.get(requestUrl, {
-            headers: {
-              'Accept': 'application/json; odata=verbose',
-              'Content-Type': 'application/json; odata=verbose'
-            }
-          }).then(content => {
-            folder.processed = true;
-            filesArr = filesArr.concat(content.body.d.Files.results.map(fileResp => {
-              return {
-                path: fileResp.ServerRelativeUrl,
-                relativePath: fileResp.ServerRelativeUrl.replace(`${serverRelativeUrl}/${this.settings.spFolder}/`.replace(/\/\//g, '/'), ''),
-                length: parseInt(fileResp.Length, 10)
-              };
-            }));
-            foldersArr = foldersArr.concat(content.body.d.Folders.results.map(folderResp => {
-              return {
-                path: folderResp.ServerRelativeUrl,
-                processed: folderResp.ItemCount === 0
-              };
-            }));
-            return resolve(this.getAllFilesInFolderInfo(foldersArr, filesArr));
-          });
-        }
-      });
+        let requestUrl = `${this.settings.siteUrl}` +
+          `/_api/web/getFolderByServerRelativeUrl('${folder.path}')?` +
+            `$select=Files,Folders/ServerRelativeUrl,Folders/ItemCount&` +
+            `$expand=Files,Folders`;
+        this.spr.get(requestUrl, {
+          headers: {
+            'Accept': 'application/json; odata=verbose',
+            'Content-Type': 'application/json; odata=verbose'
+          }
+        }).then(content => {
+          folder.processed = true;
+          filesArr = filesArr.concat(content.body.d.Files.results.map(fileResp => {
+            return {
+              path: fileResp.ServerRelativeUrl,
+              relativePath: fileResp.ServerRelativeUrl.replace(`${serverRelativeUrl}/${this.settings.spFolder}/`.replace(/\/\//g, '/'), ''),
+              length: parseInt(fileResp.Length, 10)
+            };
+          }));
+          foldersArr = foldersArr.concat(content.body.d.Folders.results.map(folderResp => {
+            return {
+              path: folderResp.ServerRelativeUrl,
+              processed: folderResp.ItemCount === 0
+            };
+          }));
+          return this.getAllFilesInFolderInfo(foldersArr, filesArr);
+        });
+      }
     });
   }
 
