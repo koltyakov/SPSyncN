@@ -21,6 +21,7 @@ for usage in .Net assemblies.
 
 - Upload a file to SharePoint document library
 - Upload a folder with structure and files to SharePoint
+- Upload a folder with structure and files to SharePoint in incremental mode
 - Download a file to SharePoint document library
 - Download a folder with structure and files to SharePoint
 - Remove a file from SharePoint document library
@@ -49,6 +50,9 @@ Remove.File("Shared Documents/File Upload Test/TextFile.txt", options.SiteUrl, o
 
 Console.WriteLine("Upload a folder...");
 Upload.Folder("./Documents", "Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
+
+Console.WriteLine("Upload a folder (incremental mode)...");
+Upload.FolderDiff("./Documents", "Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
 
 Console.WriteLine("Download a folder...");
 Download.Folder("Shared Documents/Folder Upload Test", "./Download", options.SiteUrl, options.AuthOptions);

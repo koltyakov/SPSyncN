@@ -4,8 +4,9 @@
   "description": "SPSyncN - SharePoint .Net assets sync via Node.js",
   "main": "SPSyncN.js",
   "scripts": {
-    "build": "npm run tslint && tsc -p . && webpack",
-    "package": "npm run build && cd .. && dotnet restore && dotnet build",
+    "build": "npm run build:js && npm run build:dotnet",
+    "build:js": "npm run tslint && tsc -p . && webpack",
+    "build:dotnet": "cd .. && dotnet restore && dotnet build",
     "tslint": "tslint --project tsconfig.json --type-check"
   },
   "keywords": [],

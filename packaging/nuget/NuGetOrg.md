@@ -50,6 +50,9 @@ Remove.File("Shared Documents/File Upload Test/TextFile.txt", options.SiteUrl, o
 Console.WriteLine("Upload a folder...");
 Upload.Folder("./Documents", "Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
 
+Console.WriteLine("Upload a folder (incremental mode)...");
+Upload.FolderDiff("./Documents", "Shared Documents/Folder Upload Test", options.SiteUrl, options.AuthOptions);
+
 Console.WriteLine("Download a folder...");
 Download.Folder("Shared Documents/Folder Upload Test", "./Download", options.SiteUrl, options.AuthOptions);
 

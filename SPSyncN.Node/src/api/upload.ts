@@ -51,6 +51,7 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
 
   (async () => {
     let files = utils.walkSync(params.folderPath);
+    let ignoredFiles: string[] = [];
     let remoteFiles: IFileProcessItem[] = [];
 
     if (params.diffUpload) {
@@ -75,6 +76,7 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
           // Same size
           if (remoteFile[0].length === fileContent.byteLength) {
             ignoreUpload = true;
+            ignoredFiles.push(path.basename(file));
           }
         }
       }
@@ -88,6 +90,11 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
         await spsave(coreOptions, creds, fileOptions);
       }
     }
+
+    if (params.diffUpload) {
+      console.log(`Ignored files count: ${ignoredFiles.length}`);
+    }
+
   })()
     .then(response => {
       callback(null, response);

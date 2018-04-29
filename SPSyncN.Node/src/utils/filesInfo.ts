@@ -45,10 +45,11 @@ export default class FilesInfo {
           `/_api/web/getFolderByServerRelativeUrl('${folder.path}')?` +
             `$select=Files,Folders/ServerRelativeUrl,Folders/ItemCount&` +
             `$expand=Files,Folders`;
-        this.spr.get(requestUrl, {
+
+        return this.spr.get(requestUrl, {
           headers: {
-            'Accept': 'application/json; odata=verbose',
-            'Content-Type': 'application/json; odata=verbose'
+            'Accept': 'application/json;odata=verbose',
+            'Content-Type': 'application/json;odata=verbose'
           }
         }).then(content => {
           folder.processed = true;
