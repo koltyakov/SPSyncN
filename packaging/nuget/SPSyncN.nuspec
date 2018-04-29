@@ -3,7 +3,7 @@
   <metadata>
 
     <id>SPSyncN</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>SPSyncN</title>
 
     <description>SharePoint .Net assets sync via Node.js</description>
