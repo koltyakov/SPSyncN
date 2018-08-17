@@ -1,6 +1,6 @@
 {
   "name": "sp-sync-n",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "description": "SPSyncN - SharePoint .Net assets sync via Node.js",
   "main": "SPSyncN.js",
   "scripts": {
@@ -21,20 +21,21 @@
   },
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN#readme",
   "dependencies": {
-    "node-sp-auth": "^2.4.2",
-    "sp-download": "^1.0.3",
-    "sppull": "^2.2.6",
-    "sppurge": "^1.1.4",
+    "node-sp-auth": "^2.5.5",
+    "sp-download": "^1.0.4",
+    "sppull": "^2.2.7",
+    "sppurge": "^2.0.0",
     "spsave": "^3.1.5",
-    "string-argv": "0.0.2"
+    "string-argv": "0.1.1"
   },
   "devDependencies": {
-    "imports-loader": "^0.7.1",
-    "tslint": "^5.8.0",
-    "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.6.2",
-    "uglifyjs-webpack-plugin": "^1.1.2",
-    "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.9.1"
+    "imports-loader": "^0.8.0",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^4.16.5",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.1.0"
   }
 }
