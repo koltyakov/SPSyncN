@@ -37,7 +37,9 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    .\SPSyncN.Console\bin\Release\SPSyncN.Console.exe
+    cd .\SPSyncN.Console\bin\Release
+    .\SPSyncN.Console.exe
+    cd ../../..
   displayName: 'Run SPSyncN.Console'
   timeoutInMinutes: 1
   env:
