@@ -23,7 +23,7 @@ steps:
   displayName: 'Restore NuGets'
 
 - script: |
-    cd .\SPSync.Node
+    cd .\SPSyncN.Node
     npm install
     npm run build:js
     cd ..
