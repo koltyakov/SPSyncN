@@ -61,7 +61,7 @@ namespace SPSyncN.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to var SPSyncN=function(e){function t(n){if(r[n])return r[n].exports;var i=r[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var r={};return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var r=e&amp;&amp;e.__esModule?function(){return e.default}:function(){return e};return t.d(r,&quot;a&quot;,r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=&quot;&quot;,t(t.s=304)}([function(e,t,r){(function(e){!f [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to var SPSyncN=function(e){var t={};function r(n){if(t[n])return t[n].exports;var i=t[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,r),i.l=!0,i.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){&quot;undefined&quot;!=typeof Symbol&amp;&amp;Symbol.toStringTag&amp;&amp;Object.defineProperty(e,Symbol.toStringTag,{value:&quot;Module&quot;}),Object.defineProperty(e,&quot;__esModule&quot;,{value:!0})},r.t=function(e,t){if(1&amp;t&amp;&amp;(e=r(e)),8&amp;t)return e;if(4&amp;t&amp;&amp;&quot;object&quot;==typeo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SPSyncN {
             get {

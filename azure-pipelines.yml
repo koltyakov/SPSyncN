@@ -23,7 +23,7 @@ steps:
   displayName: 'Restore NuGets'
 
 - script: |
-    cd .\SPSync.Node
+    cd .\SPSyncN.Node
     npm install
     npm run build:js
     cd ..
@@ -37,7 +37,9 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    .\SPSyncN.Console\bin\Release\SPSyncN.Console.exe
+    cd .\SPSyncN.Console\bin\Release
+    .\SPSyncN.Console.exe
+    cd ../../..
   displayName: 'Run SPSyncN.Console'
   timeoutInMinutes: 1
   env:
