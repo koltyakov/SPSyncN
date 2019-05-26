@@ -61,12 +61,11 @@ namespace SPSyncN.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to var SPSyncN=function(e){var t={};function r(n){if(t[n])return t[n].exports;var i=t[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,r),i.l=!0,i.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){&quot;undefined&quot;!=typeof Symbol&amp;&amp;Symbol.toStringTag&amp;&amp;Object.defineProperty(e,Symbol.toStringTag,{value:&quot;Module&quot;}),Object.defineProperty(e,&quot;__esModule&quot;,{value:!0})},r.t=function(e,t){if(1&amp;t&amp;&amp;(e=r(e)),8&amp;t)return e;if(4&amp;t&amp;&amp;&quot;object&quot;==typeo [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] SPSyncN {
+        internal static string SPSyncN {
             get {
-                object obj = ResourceManager.GetObject("SPSyncN", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("SPSyncN", resourceCulture);
             }
         }
     }
