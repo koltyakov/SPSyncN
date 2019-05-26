@@ -2,6 +2,7 @@
 
 [![NuGet version](https://img.shields.io/nuget/v/SPSyncN.svg)](https://www.nuget.org/packages/SPSyncN)
 [![Downloads](https://img.shields.io/nuget/dt/SPSyncN.svg)](https://www.nuget.org/packages/SPSyncN)
+![Build Status](https://koltyakov.visualstudio.com/SPNode/_apis/build/status/SPSyncN?branchName=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sharepoint-node/Lobby)
 
 ---

@@ -1,0 +1,56 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- task: NuGetToolInstaller@0
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+  displayName: 'Restore NuGets'
+
+- script: |
+    cd .\SPSync.Node
+    npm install
+    npm run build:js
+    cd ..
+  displayName: 'npm install and build'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- script: |
+    .\SPSyncN.Console\bin\Release\SPSyncN.Console.exe
+  displayName: 'Run SPSyncN.Console'
+  timeoutInMinutes: 1
+  env:
+    SPAUTH_SITEURL: $(ci.spo.siteurl)
+    SPAUTH_USERNAME: $(ci.spo.username)
+    SPAUTH_PASSWORD: $(ci.spo.password)
+
+- task: VSTest@2
+  timeoutInMinutes: 1
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+  env:
+    SPAUTH_SITEURL: $(ci.spo.siteurl)
+    SPAUTH_USERNAME: $(ci.spo.username)
+    SPAUTH_PASSWORD: $(ci.spo.password)

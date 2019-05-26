@@ -87,7 +87,7 @@ export const uploadFolder = (args: string, callback: (err: any, res: any) => voi
           fileName: path.basename(file),
           fileContent
         };
-        await spsave(coreOptions, creds, fileOptions);
+        await Promise.resolve(spsave(coreOptions, creds, fileOptions));
       }
     }
 
