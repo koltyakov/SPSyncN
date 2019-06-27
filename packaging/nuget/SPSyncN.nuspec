@@ -3,13 +3,13 @@
   <metadata>
 
     <id>SPSyncN</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>SPSyncN</title>
 
     <description>SharePoint .Net assets sync via Node.js</description>
     <tags>sharepoint dotnet nodejs assets sync spsave</tags>
 
-    <releaseNotes>Incremental upload functionality</releaseNotes>
+    <releaseNotes>Dependencies update</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>

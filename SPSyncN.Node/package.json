@@ -1,6 +1,6 @@
 {
   "name": "sp-sync-n",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "SPSyncN - SharePoint .Net assets sync via Node.js",
   "main": "SPSyncN.js",
   "scripts": {
@@ -22,8 +22,9 @@
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN#readme",
   "dependencies": {
     "node-sp-auth": "^2.5.7",
-    "sp-download": "^1.0.4",
-    "sppull": "^2.3.3",
+    "node-sp-auth-config": "^2.6.7",
+    "sp-download": "^1.0.9",
+    "sppull": "^2.4.0",
     "sppurge": "^2.0.3",
     "spsave": "^3.1.5",
     "string-argv": "0.1.1"
