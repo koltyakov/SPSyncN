@@ -7,7 +7,9 @@
     "build": "npm run build:js && npm run build:dotnet",
     "build:js": "npm run tslint && tsc -p . && webpack",
     "build:dotnet": "cd .. && dotnet restore && dotnet build",
-    "tslint": "tslint -p ."
+    "tslint": "tslint -p .",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "repository": {
@@ -27,7 +29,8 @@
     "sppull": "^2.4.1",
     "sppurge": "^2.0.3",
     "spsave": "^3.1.5",
-    "string-argv": "0.1.1"
+    "string-argv": "0.1.1",
+    "snyk": "^1.190.0"
   },
   "devDependencies": {
     "imports-loader": "^0.8.0",
@@ -36,5 +39,6 @@
     "typescript": "^3.6.3",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9"
-  }
+  },
+  "snyk": true
 }
