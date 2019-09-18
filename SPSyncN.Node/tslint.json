@@ -5,6 +5,7 @@
       true,
       "always",
       "ignore-interfaces"
-    ]
+    ],
+    "strict-type-predicates": false
   }
 }
