@@ -22,19 +22,19 @@
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN#readme",
   "dependencies": {
     "node-sp-auth": "^2.5.7",
-    "node-sp-auth-config": "^2.6.7",
-    "sp-download": "^1.0.9",
-    "sppull": "^2.4.0",
+    "node-sp-auth-config": "^2.7.0",
+    "sp-download": "^1.0.10",
+    "sppull": "^2.4.1",
     "sppurge": "^2.0.3",
     "spsave": "^3.1.5",
     "string-argv": "0.1.1"
   },
   "devDependencies": {
     "imports-loader": "^0.8.0",
-    "tslint": "^5.16.0",
+    "tslint": "^5.20.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.4.5",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   }
 }
