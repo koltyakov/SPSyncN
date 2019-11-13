@@ -24,7 +24,7 @@ steps:
 
 - script: |
     cd .\SPSyncN.Node
-    npm install
+    npm ci
     npm run build:js
     cd ..
   displayName: 'npm install and build'
