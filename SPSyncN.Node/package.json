@@ -26,7 +26,7 @@
     "sp-download": "^1.2.0",
     "sppull": "^2.6.1",
     "sppurge": "^2.1.1",
-    "spsave": "^3.1.6",
+    "spsave": "^4.0.0",
     "string-argv": "0.1.1"
   },
   "devDependencies": {
