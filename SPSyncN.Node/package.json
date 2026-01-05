@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/SPSyncN#readme",
   "dependencies": {
-    "node-sp-auth": "^2.5.7",
-    "node-sp-auth-config": "^2.9.2",
-    "sp-download": "^1.2.0",
-    "sppull": "^2.6.1",
-    "sppurge": "^2.1.1",
-    "spsave": "^3.1.6",
+    "node-sp-auth": "^3.0.0",
+    "node-sp-auth-config": "^3.0.0",
+    "sp-download": "^2.0.0",
+    "sppull": "^2.7.1",
+    "sppurge": "^3.0.0",
+    "spsave": "^4.0.0",
     "string-argv": "0.1.1"
   },
   "devDependencies": {
